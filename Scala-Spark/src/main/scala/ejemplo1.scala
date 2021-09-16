@@ -1,4 +1,5 @@
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.api.java.JavaRDD
+import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.functions.{col, sum}
 
 object ejemplo1 {
@@ -14,4 +15,5 @@ object ejemplo1 {
     .agg(sum("income"))
     .where(col("user_id").startsWith("10"))
 
+  val j: JavaRDD[Row] = df.toJavaRDD
 }
